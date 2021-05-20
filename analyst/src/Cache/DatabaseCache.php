@@ -44,7 +44,7 @@ class DatabaseCache implements CacheContract
 		$raw = get_option(self::OPTION_KEY, serialize([]));
 
 		// Raw data may be an array already
-		$this->values = is_array($raw) ? $raw : @unserialize($raw);
+		$this->values = is_array($raw) ? $raw : @maybe_unserialize($raw);
 
 		// In case serialization is failed
 		// make sure values is an array

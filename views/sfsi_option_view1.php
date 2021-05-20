@@ -2,7 +2,7 @@
 
 /* unserialize all saved option for first options */
 
-$option1 =  unserialize(get_option('sfsi_section1_options', false));
+$option1 =  maybe_unserialize(get_option('sfsi_section1_options', false));
 
 /*
 	 * Sanitize, escape and validate values
@@ -356,7 +356,7 @@ $option1['sfsi_whatsapp_display']     = (isset($option1['sfsi_whatsapp_display']
         <?php if (get_option('sfsi_custom_icons') == 'no') { ?>
             <?php
 
-            $icons = ($option1['sfsi_custom_files']) ? unserialize($option1['sfsi_custom_files']) : array();
+            $icons = ($option1['sfsi_custom_files']) ? maybe_unserialize($option1['sfsi_custom_files']) : array();
 
             $total_icons = count($icons);
 
@@ -427,7 +427,7 @@ $option1['sfsi_whatsapp_display']     = (isset($option1['sfsi_whatsapp_display']
         if (get_option('sfsi_custom_icons') == 'yes') { ?>
             <?php
 
-            $icons = ($option1['sfsi_custom_files']) ? unserialize($option1['sfsi_custom_files']) : array();
+            $icons = ($option1['sfsi_custom_files']) ? maybe_unserialize($option1['sfsi_custom_files']) : array();
 
             $total_icons = count($icons);
 

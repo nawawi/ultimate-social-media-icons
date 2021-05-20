@@ -1,7 +1,7 @@
 <?php
 /* unserialize all saved option for second section options */
-$option4 =  unserialize(get_option('sfsi_section4_options', false));
-$option2 =  unserialize(get_option('sfsi_section2_options', false));
+$option4 =  maybe_unserialize(get_option('sfsi_section4_options', false));
+$option2 =  maybe_unserialize(get_option('sfsi_section2_options', false));
 
 /*
  * Sanitize, escape and validate values
@@ -620,7 +620,7 @@ if (isset($option2['sfsi_youtubeusernameorid']) && "id" == $option2['sfsi_youtub
     <!-- Custom icon section start here -->
     <div class="custom-links custom_section">
         <?php
-        $costom_links    =    unserialize($option2['sfsi_CustomIcon_links']);
+        $costom_links    =    maybe_unserialize($option2['sfsi_CustomIcon_links']);
         $count        =    1;
         $bannerDisplay =   "display:none;";
         for ($i = $first_key; $i <= $endkey; $i++) :

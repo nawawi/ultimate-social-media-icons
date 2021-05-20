@@ -287,7 +287,7 @@ function sfsi_icons_add_meta_boxes() {
     if (function_exists('get_current_screen')) {
         $screen = get_current_screen();
     } 
-    $option5           = unserialize(get_option('sfsi_section5_options',false));
+    $option5           = maybe_unserialize(get_option('sfsi_section5_options',false));
     $hideSectionVal    = (isset($option5['sfsi_custom_social_hide'])) ? $option5['sfsi_custom_social_hide']: 'no'; 
 
     if($hideSectionVal=='no'){

@@ -3,7 +3,7 @@ if(!function_exists('sfsi_get_displayed_std_desktop_icons')){
 
     function sfsi_get_displayed_std_desktop_icons($option1=false){
 
-        $option1 =  false !== $option1 && is_array($option1) ? $option1 : unserialize(get_option('sfsi_section1_options',false));
+        $option1 =  false !== $option1 && is_array($option1) ? $option1 : maybe_unserialize(get_option('sfsi_section1_options',false));
 
         $arrDisplay = array();
 
@@ -28,14 +28,14 @@ if(!function_exists('sfsi_get_displayed_custom_desktop_icons')){
 
     function sfsi_get_displayed_custom_desktop_icons($option1=false){
         
-        $option1 = false != $option1 && is_array($option1) ? $option1 : unserialize(get_option('sfsi_section1_options',false));
+        $option1 = false != $option1 && is_array($option1) ? $option1 : maybe_unserialize(get_option('sfsi_section1_options',false));
 
         $arrDisplay = array();
 
         if(!empty($option1) && is_array($option1) && isset($option1['sfsi_custom_files']) 
             && !empty($option1['sfsi_custom_files']) ) :
             
-            $arrdbDisplay = unserialize($option1['sfsi_custom_files']);
+            $arrdbDisplay = maybe_unserialize($option1['sfsi_custom_files']);
             
             if(is_array($arrdbDisplay)):
 
@@ -55,7 +55,7 @@ if(!function_exists('sfsi_icon_get_icon_image')){
 
         $icon = false;
 
-        $option3 = unserialize(get_option('sfsi_section3_options',false));
+        $option3 = maybe_unserialize(get_option('sfsi_section3_options',false));
 
         if(isset($option3['sfsi_actvite_theme']) && !empty($option3['sfsi_actvite_theme'])){
 

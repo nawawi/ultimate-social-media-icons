@@ -32,7 +32,7 @@ class Sfsi_Widget extends WP_Widget
 		$title 		= isset($instance['title']) ? apply_filters('widget_title', $instance['title']) : '';
 		// var_dump($title,'ldfjgkdfj');
 		$show_info  = isset($instance['show_info']) ? $instance['show_info'] : false;
-		$sfsi_section5 		   =  unserialize(get_option('sfsi_section5_options', false));
+		$sfsi_section5 		   =  maybe_unserialize(get_option('sfsi_section5_options', false));
 		$icons_alignment_widget           = isset($sfsi_section5["sfsi_icons_Alignment_via_widget"]) ? sanitize_text_field($sfsi_section5["sfsi_icons_Alignment_via_widget"]) : 'center';
 		if ($icons_alignment_widget == "right") {
 			$icons_alignment_widget = "flex-end";
@@ -110,10 +110,10 @@ class Sfsi_Widget extends WP_Widget
 		{
 			global $wpdb;
 			/* Access the saved settings in database  */
-			$sfsi_section1_options =  unserialize(get_option('sfsi_section1_options', false));
-			$sfsi_section3 		   =  unserialize(get_option('sfsi_section3_options', false));
-			$sfsi_section5 		   =  unserialize(get_option('sfsi_section5_options', false));
-			$sfsi_section9 		   =  unserialize(get_option('sfsi_section9_options', false));
+			$sfsi_section1_options =  maybe_unserialize(get_option('sfsi_section1_options', false));
+			$sfsi_section3 		   =  maybe_unserialize(get_option('sfsi_section3_options', false));
+			$sfsi_section5 		   =  maybe_unserialize(get_option('sfsi_section5_options', false));
+			$sfsi_section9 		   =  maybe_unserialize(get_option('sfsi_section9_options', false));
 
 			/* calculate the width and icons display alignments */
 			$icons_space 	 	   = $sfsi_section5['sfsi_icons_spacing'];
@@ -239,8 +239,8 @@ class Sfsi_Widget extends WP_Widget
 			}
 
 			/* magnage the icons in saved order in admin */
-			$custom_icons_order = unserialize($sfsi_section5['sfsi_CustomIcons_order']);
-			$icons = unserialize($sfsi_section1_options['sfsi_custom_files']);
+			$custom_icons_order = maybe_unserialize($sfsi_section5['sfsi_CustomIcons_order']);
+			$icons = maybe_unserialize($sfsi_section1_options['sfsi_custom_files']);
 			if (!isset($sfsi_section5['sfsi_telegramIcon_order'])) {
 				$sfsi_section5['sfsi_telegramIcon_order']    = '11';
 			}
@@ -409,13 +409,13 @@ class Sfsi_Widget extends WP_Widget
 			$class = '';
 
 			/* access  all saved settings in admin */
-			$sfsi_section1_options =  unserialize(get_option('sfsi_section1_options', false));
-			$sfsi_section2_options =  unserialize(get_option('sfsi_section2_options', false));
-			$sfsi_section3_options =  unserialize(get_option('sfsi_section3_options', false));
-			$sfsi_section4_options =  unserialize(get_option('sfsi_section4_options', false));
-			$sfsi_section5_options =  unserialize(get_option('sfsi_section5_options', false));
-			$sfsi_section6_options =  unserialize(get_option('sfsi_section6_options', false));
-			$sfsi_section7_options =  unserialize(get_option('sfsi_section7_options', false));
+			$sfsi_section1_options =  maybe_unserialize(get_option('sfsi_section1_options', false));
+			$sfsi_section2_options =  maybe_unserialize(get_option('sfsi_section2_options', false));
+			$sfsi_section3_options =  maybe_unserialize(get_option('sfsi_section3_options', false));
+			$sfsi_section4_options =  maybe_unserialize(get_option('sfsi_section4_options', false));
+			$sfsi_section5_options =  maybe_unserialize(get_option('sfsi_section5_options', false));
+			$sfsi_section6_options =  maybe_unserialize(get_option('sfsi_section6_options', false));
+			$sfsi_section7_options =  maybe_unserialize(get_option('sfsi_section7_options', false));
 			/* get active theme */
 			$border_radius = '';
 			$active_theme = $sfsi_section3_options['sfsi_actvite_theme'];
@@ -1359,12 +1359,12 @@ class Sfsi_Widget extends WP_Widget
 						//$border_radius="border-radius: 38%;";
 					}
 
-					$custom_icon_urls = unserialize($sfsi_section2_options['sfsi_CustomIcon_links']);
+					$custom_icon_urls = maybe_unserialize($sfsi_section2_options['sfsi_CustomIcon_links']);
 					$url = (isset($custom_icon_urls[$icon_n]) && !empty($custom_icon_urls[$icon_n])) ? $custom_icon_urls[$icon_n] : '';
 					$toolClass = "custom_lkn";
 					$arrow_class = "";
-					$custom_icons_hoverTxt = unserialize($sfsi_section5_options['sfsi_custom_MouseOverTexts']);
-					$icons = unserialize($sfsi_section1_options['sfsi_custom_files']);
+					$custom_icons_hoverTxt = maybe_unserialize($sfsi_section5_options['sfsi_custom_MouseOverTexts']);
+					$icons = maybe_unserialize($sfsi_section1_options['sfsi_custom_files']);
 					$icon = isset($icons[$icon_n]) ? $icons[$icon_n] : '';
 
 					//Giving alternative text to image
@@ -1475,7 +1475,7 @@ class Sfsi_Widget extends WP_Widget
 		function sfsi_checkNewWindow()
 		{
 			global $wpdb;
-			$sfsi_section5_options =  unserialize(get_option('sfsi_section5_options', false));
+			$sfsi_section5_options =  maybe_unserialize(get_option('sfsi_section5_options', false));
 			if ($sfsi_section5_options['sfsi_icons_ClickPageOpen'] == "yes") {
 				return  $new_window = "target='_blank'";
 			} else {

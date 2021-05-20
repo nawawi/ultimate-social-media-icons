@@ -3,17 +3,17 @@
 
    <!---------------recovering sharedcount Check sharecount plugins is active --------------->
    <?php
-	$option5	= unserialize(get_option('sfsi_section5_options',false));
+	$option5	= maybe_unserialize(get_option('sfsi_section5_options',false));
     $sfsi_icons_sharing_and_traffic_tips =  (isset($option5['sfsi_icons_sharing_and_traffic_tips']) &&  ($option5['sfsi_icons_sharing_and_traffic_tips']) == "yes");
    if (!is_plugin_active('Ultimate-Premium-Plugin/usm_premium_icons.php') && $sfsi_icons_sharing_and_traffic_tips) {
         $current_site_url = 0 . $_SERVER['REQUEST_URI'];
-        $sfsi_dismiss_sharecount = unserialize(get_option('sfsi_dismiss_sharecount', false));
-        $sfsi_dismiss_gallery = unserialize(get_option('sfsi_dismiss_gallery', false));
-        $sfsi_dismiss_optimization = unserialize(get_option('sfsi_dismiss_optimization', false));
-        $sfsi_dismiss_gdpr = unserialize(get_option('sfsi_dismiss_gdpr', false));
-        $sfsi_dismiss_google_analytic = unserialize(get_option('sfsi_dismiss_google_analytic', false));
-        $sfsi_dismiss_woocommerce = unserialize(get_option('sfsi_dismiss_woocommerce', false));
-        $sfsi_dismiss_twitter = unserialize(get_option('sfsi_dismiss_twitter', false));
+        $sfsi_dismiss_sharecount = maybe_unserialize(get_option('sfsi_dismiss_sharecount', false));
+        $sfsi_dismiss_gallery = maybe_unserialize(get_option('sfsi_dismiss_gallery', false));
+        $sfsi_dismiss_optimization = maybe_unserialize(get_option('sfsi_dismiss_optimization', false));
+        $sfsi_dismiss_gdpr = maybe_unserialize(get_option('sfsi_dismiss_gdpr', false));
+        $sfsi_dismiss_google_analytic = maybe_unserialize(get_option('sfsi_dismiss_google_analytic', false));
+        $sfsi_dismiss_woocommerce = maybe_unserialize(get_option('sfsi_dismiss_woocommerce', false));
+        $sfsi_dismiss_twitter = maybe_unserialize(get_option('sfsi_dismiss_twitter', false));
 
         // var_dump($sfsi_dismiss_sharecount,$sfsi_dismiss_gallery,$sfsi_dismiss_optimization,$sfsi_dismiss_gdpr,$sfsi_dismiss_google_analytic);
         // foreach ($gallery_plugins as $key => $gallery_plugin) {

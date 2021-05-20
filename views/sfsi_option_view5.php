@@ -1,9 +1,9 @@
 <?php
 	/* unserialize all saved option for  section 5 options */
-	$icons 		= ($option1['sfsi_custom_files']) ? unserialize($option1['sfsi_custom_files']) : array() ;
-	$option3	= unserialize(get_option('sfsi_section3_options',false));
-	$option5	= unserialize(get_option('sfsi_section5_options',false));
-	$custom_icons_order = unserialize($option5['sfsi_CustomIcons_order']);
+	$icons 		= ($option1['sfsi_custom_files']) ? maybe_unserialize($option1['sfsi_custom_files']) : array() ;
+	$option3	= maybe_unserialize(get_option('sfsi_section3_options',false));
+	$option5	= maybe_unserialize(get_option('sfsi_section5_options',false));
+	$custom_icons_order = maybe_unserialize($option5['sfsi_CustomIcons_order']);
 	if(!isset($option5['sfsi_telegramIcon_order'])){                     
         $option5['sfsi_telegramIcon_order']    = '11';
     }
@@ -503,7 +503,7 @@
         <div class="clear"> </div>  
 		<div class="custom_m">
         	<?php 
-                $sfsiMouseOverTexts =  unserialize($option5['sfsi_custom_MouseOverTexts']);
+                $sfsiMouseOverTexts =  maybe_unserialize($option5['sfsi_custom_MouseOverTexts']);
                 $count = 1; for($i=$first_key; $i <= $endkey; $i++) :
             ?><?php if(!empty( $icons[$i])) : ?>
                 

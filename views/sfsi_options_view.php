@@ -91,7 +91,7 @@
     <!-- Top content area of plugin -->
     <div class="main_contant">
         <?php
-        $sfsi_new_intro_banner_hide_option = unserialize(get_option('sfsi_new_intro_banner_hide_option'));
+        $sfsi_new_intro_banner_hide_option = maybe_unserialize(get_option('sfsi_new_intro_banner_hide_option'));
         ?>
         <div class="sfsi_new_intro pb-4" style="<?php echo ($sfsi_new_intro_banner_hide_option['sfsi_display_section'] == "true") ?  'display:block !important;' : 'display:none!important;'; ?>">
             <div class="row justify-content-center">

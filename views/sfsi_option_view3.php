@@ -2,9 +2,9 @@
 
 /* unserialize all saved option for second section options */
 
-$option3 =  unserialize(get_option('sfsi_section3_options', false));
+$option3 =  maybe_unserialize(get_option('sfsi_section3_options', false));
 
-$option1 =  unserialize(get_option('sfsi_section1_options', false));
+$option1 =  maybe_unserialize(get_option('sfsi_section1_options', false));
 
 /*
 

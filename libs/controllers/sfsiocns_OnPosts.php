@@ -4,9 +4,9 @@
 function sfsi_social_buttons_below($content)
 {
 	global $post;
-	$sfsi_section4 =  unserialize(get_option('sfsi_section4_options', false));
-	$sfsi_section6 =  unserialize(get_option('sfsi_section6_options', false));
-	$sfsi_section9   = unserialize(get_option('sfsi_section9_options', false));
+	$sfsi_section4 =  maybe_unserialize(get_option('sfsi_section4_options', false));
+	$sfsi_section6 =  maybe_unserialize(get_option('sfsi_section6_options', false));
+	$sfsi_section9   = maybe_unserialize(get_option('sfsi_section9_options', false));
 	// if($sfsi_section9["sfsi_show_via_afterposts"]!=="yes"){
 	// 	return $content;
 	// }
@@ -66,7 +66,7 @@ function sfsi_social_buttons_below($content)
 					$icons .= "<div class='sf_fb sf_icon' style='text-align:left;vertical-align: middle;'>" . sfsi_FBlike($permalink, $show_count) . "</div>";
 				}
 				if ($sfsi_section6['sfsi_rectfbshare'] == 'yes') {
-					$sfsi_section4	= unserialize(get_option('sfsi_section4_options', false));
+					$sfsi_section4	= maybe_unserialize(get_option('sfsi_section4_options', false));
 					$socialObj = new sfsi_SocialHelper();
 					$count_html = "";
 					if ($show_count > 0) {
@@ -91,7 +91,7 @@ function sfsi_social_buttons_below($content)
 					// if ($show_count ) {
 					// 	/* get twitter counts */
 					// 	if ($sfsi_section4['sfsi_twitter_countsFrom'] == "source") {
-					// 		$option2	= unserialize(get_option('sfsi_section2_options', false));
+					// 		$option2	= maybe_unserialize(get_option('sfsi_section2_options', false));
 
 					// 		$twitter_user = $option2['sfsi_twitter_followUserName'];
 					// 		$tw_settings = array(
@@ -150,9 +150,9 @@ function sfsi_Subscribelike($permalink, $show_count)
 	global $socialObj;
 	$socialObj = new sfsi_SocialHelper();
 
-	$sfsi_section2_options =  unserialize(get_option('sfsi_section2_options', false));
-	$sfsi_section4_options = unserialize(get_option('sfsi_section4_options', false));
-	$sfsi_section6_options =  unserialize(get_option('sfsi_section6_options', false));
+	$sfsi_section2_options =  maybe_unserialize(get_option('sfsi_section2_options', false));
+	$sfsi_section4_options = maybe_unserialize(get_option('sfsi_section4_options', false));
+	$sfsi_section6_options =  maybe_unserialize(get_option('sfsi_section6_options', false));
 	$url = (isset($sfsi_section2_options['sfsi_email_url'])) ? $sfsi_section2_options['sfsi_email_url'] : 'https://follow.it/now';
 	if ($sfsi_section4_options['sfsi_email_countsFrom'] == "source") {
 		$feed_id = sanitize_text_field(get_option('sfsi_feed_id', false));
@@ -246,7 +246,7 @@ function sfsi_FBlike($permalink, $show_count)
 	$send = 'false';
 	$fb_like_html = '';
 
-	$option6 =  unserialize(get_option('sfsi_section6_options', false));
+	$option6 =  maybe_unserialize(get_option('sfsi_section6_options', false));
 
 	$fb_like_html .= '<div class="fb-like" data-href="' . $permalink . '"  data-send="' . $send . '" ';
 
@@ -271,10 +271,10 @@ function sfsiFB_Share_Custom($permalink, $show_count = false)
 /* add all external javascript to wp_footer */
 function sfsi_footer_script()
 {
-	$sfsi_section1 =  unserialize(get_option('sfsi_section1_options', false));
-	$sfsi_section6 =  unserialize(get_option('sfsi_section6_options', false));
-	$sfsi_section9   = unserialize(get_option('sfsi_section9_options', false));
-	$sfsi_section2 =  unserialize(get_option('sfsi_section2_options', false));
+	$sfsi_section1 =  maybe_unserialize(get_option('sfsi_section1_options', false));
+	$sfsi_section6 =  maybe_unserialize(get_option('sfsi_section6_options', false));
+	$sfsi_section9   = maybe_unserialize(get_option('sfsi_section9_options', false));
+	$sfsi_section2 =  maybe_unserialize(get_option('sfsi_section2_options', false));
 
 	if (!isset($sfsi_section6['sfsi_rectsub'])) {
 		$sfsi_section6['sfsi_rectsub'] = 'no';
@@ -398,8 +398,8 @@ function sfsi_footer_script()
 		global $wp;
 		$count = 60;
 		if (((isset($option6["sfsi_display_button_type"]) && $option6["sfsi_display_button_type"] == "responsive_button")) || $server_side) :
-			$option2 = unserialize(get_option('sfsi_section2_options', false));
-			$option4 = unserialize(get_option('sfsi_section4_options', false));
+			$option2 = maybe_unserialize(get_option('sfsi_section2_options', false));
+			$option4 = maybe_unserialize(get_option('sfsi_section4_options', false));
 			$icons = "";
 			$sfsi_responsive_icons = (isset($option6["sfsi_responsive_icons"]) ? $option6["sfsi_responsive_icons"] : null);
 			$current_url = in_the_loop() ? add_query_arg($_GET ? $_GET : array(), get_permalink()) : add_query_arg($wp->query_vars, home_url($wp->request));

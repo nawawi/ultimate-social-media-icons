@@ -15,7 +15,7 @@ function sfsi_check_PopUp($content)
 
     $content = '';
 
-    $sfsi_section7_options =  unserialize(get_option('sfsi_section7_options', false));
+    $sfsi_section7_options =  maybe_unserialize(get_option('sfsi_section7_options', false));
 
     if (isset($sfsi_section7_options['sfsi_Show_popupOn']) && !empty($sfsi_section7_options['sfsi_Show_popupOn'])) {
 
@@ -25,7 +25,7 @@ function sfsi_check_PopUp($content)
             }
         } else if ($sfsi_section7_options['sfsi_Show_popupOn'] == "selectedpage") {
             if (!empty($post->ID) && !empty($sfsi_section7_options['sfsi_Show_popupOn_PageIDs'])) {
-                if (is_page() && in_array($post->ID,  unserialize($sfsi_section7_options['sfsi_Show_popupOn_PageIDs']))) {
+                if (is_page() && in_array($post->ID,  maybe_unserialize($sfsi_section7_options['sfsi_Show_popupOn_PageIDs']))) {
                     $content =  sfsi_frontPopUp() . $content;
                 }
             }
@@ -103,16 +103,16 @@ function sfsi_FrontPopupDiv()
 {
     global $wpdb;
     /* get all settings for icons saved in admin */
-    $sfsi_section1_options =  unserialize(get_option('sfsi_section1_options', false));
-    $custom_i = unserialize($sfsi_section1_options['sfsi_custom_files']);
+    $sfsi_section1_options =  maybe_unserialize(get_option('sfsi_section1_options', false));
+    $custom_i = maybe_unserialize($sfsi_section1_options['sfsi_custom_files']);
     if ($sfsi_section1_options['sfsi_rss_display'] == 'no' &&  $sfsi_section1_options['sfsi_email_display'] == 'no' && $sfsi_section1_options['sfsi_facebook_display'] == 'no' && $sfsi_section1_options['sfsi_twitter_display'] == 'no' && $sfsi_section1_options['sfsi_youtube_display'] == 'no' && $sfsi_section1_options['sfsi_pinterest_display'] == 'no' && $sfsi_section1_options['sfsi_linkedin_display'] == 'no' && empty($custom_i)) {
         $icons = '';
         return $icons;
         exit;
     }
-    $sfsi_section7_options =  unserialize(get_option('sfsi_section7_options', false));
-    $sfsi_section5 =  unserialize(get_option('sfsi_section5_options', false));
-    $sfsi_section4 =  unserialize(get_option('sfsi_section4_options', false));
+    $sfsi_section7_options =  maybe_unserialize(get_option('sfsi_section7_options', false));
+    $sfsi_section5 =  maybe_unserialize(get_option('sfsi_section5_options', false));
+    $sfsi_section4 =  maybe_unserialize(get_option('sfsi_section4_options', false));
     /* calculate the width and icons display alignments */
     $heading_text = (isset($sfsi_section7_options['sfsi_popup_text'])) ? $sfsi_section7_options['sfsi_popup_text'] : 'Enjoy this site? Please follow and like us!';
     $div_bgColor = (isset($sfsi_section7_options['sfsi_popup_background_color'])) ? $sfsi_section7_options['sfsi_popup_background_color'] : '#fff';
@@ -130,7 +130,7 @@ function sfsi_FrontPopupDiv()
     }
     $h_style = "font-family:" . $div_FontFamily . ";font-style:" . $div_Fonttyle . ";color:" . $div_FontColor . ";font-size:" . $div_FontSize . "px";
     /* get all icons including custom icons */
-    $custom_icons_order = unserialize($sfsi_section5['sfsi_CustomIcons_order']);
+    $custom_icons_order = maybe_unserialize($sfsi_section5['sfsi_CustomIcons_order']);
     $icons_order = array(
         $sfsi_section5['sfsi_rssIcon_order'] => 'rss',
         $sfsi_section5['sfsi_emailIcon_order'] => 'email',
@@ -150,7 +150,7 @@ function sfsi_FrontPopupDiv()
     );
     $icons = array();
     $elements = array();
-    $icons =  unserialize($sfsi_section1_options['sfsi_custom_files']);
+    $icons =  maybe_unserialize($sfsi_section1_options['sfsi_custom_files']);
     if (is_array($icons))  $elements = array_keys($icons);
     $cnt = 0;
     $total = isset($custom_icons_order) && is_array($custom_icons_order) ? count($custom_icons_order) : 0;

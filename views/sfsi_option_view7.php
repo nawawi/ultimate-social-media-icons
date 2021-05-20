@@ -2,9 +2,9 @@
 
 /* unserialize all saved option for  section 7 options */
 
-$option7 =  unserialize(get_option('sfsi_section7_options', false));
+$option7 =  maybe_unserialize(get_option('sfsi_section7_options', false));
 while(is_string($option7)){
-	$option7 =  @unserialize($option7);
+	$option7 =  @maybe_unserialize($option7);
 	if(false == $option7){
 		$option7 = array();
 	}
@@ -459,7 +459,7 @@ $option7['sfsi_Shown_popupOnceTime'] 	= (isset($option7['sfsi_Shown_popupOnceTim
 
 					$select		= (isset($option7['sfsi_Show_popupOn_PageIDs']))
 
-						? unserialize($option7['sfsi_Show_popupOn_PageIDs'])
+						? maybe_unserialize($option7['sfsi_Show_popupOn_PageIDs'])
 
 						: array();
 

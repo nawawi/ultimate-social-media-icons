@@ -1,7 +1,7 @@
 <?php
 /* unserialize all saved option for  section 6 options */
 
-$option6 =  unserialize(get_option('sfsi_section6_options', false));
+$option6 =  maybe_unserialize(get_option('sfsi_section6_options', false));
 
 /**
 

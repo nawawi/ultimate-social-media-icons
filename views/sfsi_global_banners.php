@@ -1,18 +1,18 @@
 <!------------------------------------------------------ Global Banners ----------------------------------------------------------->
 <?php
 // sfsi_has_gdpr_plugin_activated($gdpr_plugins);
-$option5    = unserialize(get_option('sfsi_section5_options', false));
+$option5    = maybe_unserialize(get_option('sfsi_section5_options', false));
 $sfsi_icons_sharing_and_traffic_tips = (isset($option5['sfsi_icons_sharing_and_traffic_tips']) && ($option5['sfsi_icons_sharing_and_traffic_tips']) == "yes");
 if (!is_plugin_active('Ultimate-Premium-Plugin/usm_premium_icons.php') && $sfsi_icons_sharing_and_traffic_tips) {
-    $sfsi_banner_global_firsttime_offer = unserialize(get_option('sfsi_banner_global_firsttime_offer', false));
-    $sfsi_banner_global_pinterest = unserialize(get_option('sfsi_banner_global_pinterest', false));
-    $sfsi_banner_global_social = unserialize(get_option('sfsi_banner_global_social', false));
-    $sfsi_banner_global_load_faster = unserialize(get_option('sfsi_banner_global_load_faster', false));
-    $sfsi_banner_global_shares = unserialize(get_option('sfsi_banner_global_shares', false));
-    $sfsi_banner_global_gdpr = unserialize(get_option('sfsi_banner_global_gdpr', false));
-    $sfsi_banner_global_http = unserialize(get_option('sfsi_banner_global_http', false));
-    $sfsi_banner_global_upgrade = unserialize(get_option('sfsi_banner_global_upgrade', false));
-    $sfsi_dismiss_copy_delete_post = unserialize(get_option('sfsi_dismiss_copy_delete_post', false));
+    $sfsi_banner_global_firsttime_offer = maybe_unserialize(get_option('sfsi_banner_global_firsttime_offer', false));
+    $sfsi_banner_global_pinterest = maybe_unserialize(get_option('sfsi_banner_global_pinterest', false));
+    $sfsi_banner_global_social = maybe_unserialize(get_option('sfsi_banner_global_social', false));
+    $sfsi_banner_global_load_faster = maybe_unserialize(get_option('sfsi_banner_global_load_faster', false));
+    $sfsi_banner_global_shares = maybe_unserialize(get_option('sfsi_banner_global_shares', false));
+    $sfsi_banner_global_gdpr = maybe_unserialize(get_option('sfsi_banner_global_gdpr', false));
+    $sfsi_banner_global_http = maybe_unserialize(get_option('sfsi_banner_global_http', false));
+    $sfsi_banner_global_upgrade = maybe_unserialize(get_option('sfsi_banner_global_upgrade', false));
+    $sfsi_dismiss_copy_delete_post = maybe_unserialize(get_option('sfsi_dismiss_copy_delete_post', false));
     $sfsi_current_date_demo = get_option('sfsi_current_date_demo', false);
     // var_dump(
     //     $sfsi_banner_global_firsttime_offer,

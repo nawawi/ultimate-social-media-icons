@@ -1,8 +1,8 @@
 <?php
 /* unserialize all saved option for  section 4 options */
-$option6 =  unserialize(get_option('sfsi_section6_options', false));
-$option4 =  unserialize(get_option('sfsi_section4_options', false));
-$option2 =  unserialize(get_option('sfsi_section2_options', false));
+$option6 =  maybe_unserialize(get_option('sfsi_section6_options', false));
+$option4 =  maybe_unserialize(get_option('sfsi_section4_options', false));
+$option2 =  maybe_unserialize(get_option('sfsi_section2_options', false));
 if (!isset($option4['sfsi_facebook_mypageCounts'])) {
     $option4['sfsi_facebook_mypageCounts'] = '';
 }
